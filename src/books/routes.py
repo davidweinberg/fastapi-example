@@ -27,7 +27,7 @@ async def create_a_book(book_data: BookCreateModel, session: AsyncSession = Depe
     new_book = await book_service.create_book(book_data, session)
     return new_book
 
-@book_router.patch('/{book_uid}')
+@book_router.patch('/{book_uid}', response_model=Book)
 async def update_book(
         book_uid: str,
         book_update_data: BookUpdateModel,
