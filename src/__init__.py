@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from src.books.routes import book_router
+from src.users.routes import user_router
 from contextlib import asynccontextmanager
 from src.db.main import init_db
 
@@ -18,4 +19,5 @@ app = FastAPI(
     version=version,
     lifespan=life_span
 )
-app.include_router(book_router, prefix="/api/{version}/books", tags=["Books"])
+app.include_router(book_router, prefix="/api/{version}/books", tags=["books"])
+app.include_router(user_router, prefix="/api/{version}/users", tags=["users"])
